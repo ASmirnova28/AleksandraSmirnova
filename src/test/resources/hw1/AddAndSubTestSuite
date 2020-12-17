@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Addition and subtraction test suite">
+    <test name="Addition test">
+        <classes>
+            <class name="hw1.CalculatorAdditionTest"/>
+        </classes>
+    </test>
+    <test name="Subtraction test">
+        <classes>
+            <class name="hw1.CalculatorSubtractionTest"/>
+        </classes>
+    </test>
+</suite>

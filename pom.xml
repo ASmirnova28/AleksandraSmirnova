@@ -19,10 +19,10 @@
         <profile>
             <id>Full</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.file>${project.basedir}/src/test/resources/FullTestSuite.xml</suite.file>
+                <suite.file>${project.basedir}/src/test/resources/hw1/FullTestSuite.xml</suite.file>
             </properties>
         </profile>
         <profile>
@@ -31,16 +31,16 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>${project.basedir}/src/test/resources/AddAndSubTestSuite.xml</suite.file>
+                <suite.file>${project.basedir}/src/test/resources/hw1/AddAndSubTestSuite.xml</suite.file>
             </properties>
         </profile>
         <profile>
             <id>DivAndMult</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>${project.basedir}/src/test/resources/DivAndMultTestSuite.xml</suite.file>
+                <suite.file>${project.basedir}/src/test/resources/hw1/DivAndMultTestSuite.xml</suite.file>
             </properties>
         </profile>
     </profiles>

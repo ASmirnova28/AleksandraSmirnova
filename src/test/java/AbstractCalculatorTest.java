@@ -5,12 +5,12 @@ public abstract class AbstractCalculatorTest {
 
     protected Calculator calculator;
 
-    @BeforeSuite
+    @BeforeClass
     public void setUp() {
         calculator = new Calculator();
     }
 
-    @AfterSuite
+    @AfterClass
     public void tearDown() {
         calculator = null;
     }

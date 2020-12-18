@@ -19,7 +19,7 @@
         <profile>
             <id>Full</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw1/FullTestSuite.xml</suite.file>
@@ -28,7 +28,7 @@
         <profile>
             <id>AddAndSub</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw1/AddAndSubTestSuite.xml</suite.file>
@@ -85,4 +85,3 @@
         </plugins>
     </build>
 </project>
-

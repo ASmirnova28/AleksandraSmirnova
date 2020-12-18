@@ -1,14 +1,5 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<!--<suite name="Multiplication and division test suite">-->
-
-<!--    <test name="Multiplication and division test suite passed">-->
-<!--        <classes>-->
-<!--            <class name="hw1.CalculatorDivisionTest"/>-->
-<!--            <class name="hw1.CalculatorMultiplicationTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--</suite>-->
 <suite name="Multiply and divide suite">
     <test name="Multiply Test">
         <classes>

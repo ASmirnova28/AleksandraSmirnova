@@ -18,7 +18,15 @@
     </properties>
 
     <profiles>
-
+        <profile>
+            <id>TestSuite</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>${project.basedir}/src/test/resources/hw2/TestSuite.xml</suite.file>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>

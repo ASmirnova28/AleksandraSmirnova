@@ -2,13 +2,13 @@ package hw2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 
 public class CommonStepsTest extends AbstractTest {
 
     private WebDriver webDriver;
-    private CommonStepsTest commonTS;
     private SoftAssert softAssert;
 
     public CommonStepsTest(WebDriver webdriver, SoftAssert softAssert) {
@@ -21,7 +21,7 @@ public class CommonStepsTest extends AbstractTest {
 
         // 1. Open test site by URL
         String url = "https://jdi-testing.github.io/jdi-light/index.html";
-        webDriver.get(url);
+        webDriver.navigate().to(url);
         softAssert.assertEquals(webDriver.getCurrentUrl(), url);
 
         // 2. Assert Browser title
@@ -35,7 +35,7 @@ public class CommonStepsTest extends AbstractTest {
         softAssert.assertTrue(webDriver.findElement(By.className("logout")).isDisplayed());
 
         // 4. Assert Username is logged in
-        softAssert.assertEquals(webDriver.findElement(By.id("user-name")).getText(),
-                "ROMAN IOVLEV");
+        WebElement userName = webDriver.findElement(By.id("user-name"));
+        softAssert.assertEquals(userName.getText(), "ROMAN IOVLEV");
     }
 }

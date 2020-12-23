@@ -10,6 +10,7 @@ public class CommonStepsTest extends AbstractTest {
 
     private WebDriver webDriver;
     private SoftAssert softAssert;
+    private final static String URL = "https://jdi-testing.github.io/jdi-light/index.html";
 
     public CommonStepsTest(WebDriver webdriver, SoftAssert softAssert) {
         this.webDriver = webdriver;
@@ -20,9 +21,8 @@ public class CommonStepsTest extends AbstractTest {
     public void fourInitialSteps() {
 
         // 1. Open test site by URL
-        String url = "https://jdi-testing.github.io/jdi-light/index.html";
-        webDriver.navigate().to(url);
-        softAssert.assertEquals(webDriver.getCurrentUrl(), url);
+        webDriver.navigate().to(URL);
+        softAssert.assertEquals(webDriver.getCurrentUrl(), URL);
 
         // 2. Assert Browser title
         softAssert.assertEquals(webDriver.getTitle(), "Home Page");

@@ -31,7 +31,6 @@ public class Ex2Test extends AbstractTest {
         checkbox2.click();
         softAssert.assertTrue(checkbox2.isSelected());
 
-
         // 7. Select radio
         WebElement radio = webDriver.findElement(By.xpath("//div[3]/label[4]/input"));
         radio.click();

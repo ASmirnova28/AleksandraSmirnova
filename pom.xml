@@ -13,34 +13,18 @@
         <maven.compiler.plugin.source>1.8</maven.compiler.plugin.source>
         <maven.compiler.plugin.target>1.8</maven.compiler.plugin.target>
         <testng.version>7.3.0</testng.version>
+        <selenium.version>3.141.59</selenium.version>
+        <bonigarcia.version>3.8.1</bonigarcia.version>
     </properties>
 
     <profiles>
         <profile>
-            <id>Full</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <suite.file>${project.basedir}/src/test/resources/hw1/FullTestSuite.xml</suite.file>
-            </properties>
-        </profile>
-        <profile>
-            <id>AddAndSub</id>
+            <id>PageObjectTestSuite</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.file>${project.basedir}/src/test/resources/hw1/AddAndSubTestSuite.xml</suite.file>
-            </properties>
-        </profile>
-        <profile>
-            <id>DivAndMult</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <suite.file>${project.basedir}/src/test/resources/hw1/DivAndMultTestSuite.xml</suite.file>
+                <suite.file>${project.basedir}/src/test/resources/hw3/PageObjectTestSuite.xml</suite.file>
             </properties>
         </profile>
     </profiles>
@@ -53,11 +37,20 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.epam.tat.module4</groupId>
-            <artifactId>calculator</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/calculator-1.0.jar</systemPath>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${bonigarcia.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>1.7.13</version>
         </dependency>
     </dependencies>
 

@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Page Object Test suite">
+    <test name="Page Object Ex1 Test">
+        <classes>
+            <class name="hw3.pageobject_model.tests.ex1.PageObjectEx1Test"/>
+        </classes>
+    </test>
+    <test name="Page Object Ex2 Test">
+        <classes>
+            <class name="hw3.pageobject_model.tests.ex2.PageObjectEx2Test"/>
+        </classes>
+    </test>
+</suite>

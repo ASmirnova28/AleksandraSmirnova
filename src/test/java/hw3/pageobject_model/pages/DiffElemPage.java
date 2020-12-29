@@ -1,79 +1,59 @@
 package hw3.pageobject_model.pages;
 
+import hw3.pageobject_model.components.LogRows;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class DiffElemPage {
+public class DiffElemPage extends AbstractPage{
 
-    protected WebDriver webDriver;
+    private LogRows logRows;
 
-    @FindBy(xpath = "//a/span[contains(text(),'Service')]")
-    private WebElement diffElemPage;
-    @FindBy(xpath = "//a/span[contains(text(),'Different elements')]")
-    private WebElement diffElemItemInHeaderMenu;
-    @FindBy(xpath = "//li[contains(text(), '%s')]")
-    private static List<WebElement> logRows;
-    @FindBy(xpath = "//*[@class = 'checkbox-row']/label[contains(., 'Water')]")
-    private WebElement waterCheckbox;
-    @FindBy(xpath = "//*[@class = 'checkbox-row']/label[contains(., 'Wind')]")
-    private WebElement windCheckbox;
-    @FindBy(xpath = "//*[@class = 'checkbox-row']/label[contains(., 'Selen')]")
-    private WebElement radioSelen;
-    @FindBy(xpath = "//select[@class = 'uui-form-element']")
-    private WebElement colourInDropDown;
+    @FindBy(css = ".colors select")
+    private WebElement colorsDropdown;
+
+    @FindBy(className = "label-radio")
+    private List<WebElement> radioElements;
+
+    @FindBy(className = "label-checkbox")
+    private List<WebElement> checkBoxElements;
 
     public DiffElemPage(WebDriver webDriver) {
+        super(webDriver);
+        this.logRows = new LogRows(webDriver);
         PageFactory.initElements(webDriver, this);
-        this.webDriver = webDriver;
     }
 
-    public void selectDiffElemPage() {
-        diffElemPage.click();
+    public boolean isCheckboxLogDisplayed(String checkboxName, String status){
+        return logRows.isCheckboxLogDisplayed(checkboxName,  status);
     }
 
-    public void selectDiffElemItemInHeaderMenu() {
-        diffElemItemInHeaderMenu.click();
+    public boolean isRadioLogDisplayed(String radioName) {
+        return logRows.isRadioLogDisplayed(radioName);
     }
 
-    public void selectWaterCheckbox() {
-        waterCheckbox.click();
+    public boolean isDropdownLogDisplayed(String dropdownValue) {
+        return logRows.isDropdownLogDisplayed(dropdownValue);
     }
 
-    public void selectWindCheckbox() {
-        windCheckbox.click();
+    public void setColorDropDown(String color) {
+        colorsDropdown = wait.until(ExpectedConditions.visibilityOf(colorsDropdown));
+        Select select = new Select(colorsDropdown);
+        select.selectByVisibleText(color);
     }
 
-    public void selectRadioSelen() {
-        radioSelen.click();
+    public void setCheckBox(String checkboxName) {
+        putElementsInAList(checkboxName, checkBoxElements);
     }
 
-    public void selectColourInDropDown() {
-        Select colour = new Select(colourInDropDown);
-        colour.selectByVisibleText("Yellow");
+    public void setRadio(String radioName) {
+        putElementsInAList(radioName, radioElements);
     }
 
-    public static List<WebElement> getLogRows(String logWord) {
-        return logRows;
-    }
-
-    public List<WebElement> logWaterCheckbox() {
-        return getLogRows("Water");
-    }
-
-    public List<WebElement> logWindCheckbox() {
-        return getLogRows("Wind");
-    }
-
-    public List<WebElement> logSelenRadio() {
-        return getLogRows("metal");
-    }
-
-    public List<WebElement> colourDropDown() {
-        return getLogRows("Colors");
-    }
 }
+

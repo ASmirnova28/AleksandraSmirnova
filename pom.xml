@@ -15,6 +15,7 @@
         <testng.version>7.3.0</testng.version>
         <selenium.version>3.141.59</selenium.version>
         <bonigarcia.version>3.8.1</bonigarcia.version>
+        <slf4j.version>1.7.13</slf4j.version>
     </properties>
 
     <profiles>
@@ -50,7 +51,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-nop</artifactId>
-            <version>1.7.13</version>
+            <version>${slf4j.version}</version>
         </dependency>
     </dependencies>
 

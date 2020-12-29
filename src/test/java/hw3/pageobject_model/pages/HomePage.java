@@ -1,124 +1,90 @@
 package hw3.pageobject_model.pages;
 
+import hw3.pageobject_model.components.Benefits;
+import hw3.pageobject_model.components.ButtonFrame;
+import hw3.pageobject_model.components.HeaderMenu;
+import hw3.pageobject_model.components.LeftMenu;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
-import java.util.Properties;
 
-import static org.testng.Assert.assertEquals;
+public class HomePage extends AbstractPage{
 
-public class HomePage {
-
-    protected WebDriver webDriver;
-    protected String URL = "https://jdi-testing.github.io/jdi-light/index.html";
-
-
-    @FindBy(id = "name")
-    private WebElement loginField;
-    @FindBy(css = "#password")
-    private WebElement passwordField;
-    @FindBy(id = "login-button")
-    private WebElement enterButton;
-    @FindBy(xpath = "//*[@class='profile-photo']//span")
-    private WebElement user;
-    @FindBy(css = "ul.uui-navigation.nav")
-    private WebElement headerItems;
-    @FindBy(linkText = "HOME")
-    private WebElement homeItem;
-    @FindBy(linkText = "CONTACT FORM")
-    private WebElement contactFormItem;
-    @FindBy(linkText = "SERVICE")
-    private WebElement serviceItem;
-    @FindBy(linkText = "METALS & COLORS")
-    private WebElement metalsAndColorsItem;
-    @FindBy(css = ".benefit-icon span")
-    private List<WebElement> images;
-    @FindBy(css = ".benefit-txt")
-    private List<WebElement> texts;
-    @FindBy(id = "frame")
-    private WebElement iframe;
-    @FindBy(id = "button-frame")
-    private WebElement frameButton;
-    @FindBy(css = "ul.sidebar-menu")
-    private WebElement leftMenu;
-    @FindBy(className = "profile-photo")
-    private WebElement dropDownMenu;
+    private Benefits benefits;
+    private ButtonFrame buttonFrame;
 
     public HomePage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-        PageFactory.initElements(webDriver, this);
+        super(webDriver);
+        this.headerMenu = new HeaderMenu(webDriver);
+       this.benefits = new Benefits(webDriver);
+        this.buttonFrame = new ButtonFrame(webDriver);
+        this.leftMenu = new LeftMenu(webDriver);
     }
 
-    public void openHomePage() {
-        webDriver.navigate().to(URL);
+    public void login(String username, String password){
+        headerMenu.login(username, password);
     }
 
-    public void assertTitle(String title) {
-        assertEquals(webDriver.getTitle(), title);
+    public boolean isUserNameDisplayed(){
+        return headerMenu.isUserNameDisplayed();
     }
 
-    public void login() throws IOException {
-        InputStream input = new FileInputStream("src/test/resources/hw3/prop.properties");
-        Properties prop = new Properties();
-        prop.load(input);
-        dropDownMenu.click();
-        loginField.sendKeys(prop.getProperty("name"));
-        passwordField.sendKeys(prop.getProperty("password"));
-        enterButton.click();
+    public String getUserName(){
+        return headerMenu.getUserName();
     }
 
-    public String getUserName() {
-        return user.getText();
+    public String getBrowserTitle(){
+        return webDriver.getTitle();
     }
 
-    public List<WebElement> getImages() {
-        return images;
+    public List<String> getHeaderMenuText(){
+        return headerMenu.getHeaderMenuElementsText();
     }
 
-    public List<WebElement> getTexts() {
-        return texts;
+    public boolean isHeaderMenuItemsDisplayed(){ return headerMenu.isHeaderMenuItemsDisplayed(); }
+
+    public int getBenefitImagesCount(){
+        return benefits.getBenefitImagesNumber();
     }
 
-    public String getHomeItemText() {
-        return homeItem.getText();
+    public int getBenefitTextsCount(){
+        return benefits.getBenefitTextsNumber();
     }
 
-    public String getContactFormItemText() {
-        return contactFormItem.getText();
+    public List<String> getBenefitTexts(){
+        return benefits.getBenefitTexts();
     }
 
-    public String getServiceItemText() {
-        return serviceItem.getText();
+    public boolean isBenefitIconsDisplayed(){
+        return benefits.isBenefitIconsDisplayed();
     }
 
-    public String getMetalAndColoursItemText() {
-        return metalsAndColorsItem.getText();
+    public boolean isFrameDisplayed(){
+        return buttonFrame.isFrameDisplayed();
     }
 
-    public boolean isIframeDispayed() {
-        return iframe != null;
+    public boolean isFrameButtonDisplayed(){
+        return buttonFrame.isButtonDisplayed();
     }
 
-    public WebElement getIframe() {
-        return iframe;
+    public void switchToFrame(){
+        buttonFrame.switchToFrame();
     }
 
-    public WebElement getFrameButton() {
-        return frameButton;
+    public void switchToDefault(){
+        buttonFrame.switchToDefaultWindow();
     }
 
-    public Boolean isLeftMenuDisplayed() {
-        return leftMenu.isDisplayed();
+    public boolean isSidebarElementsDisplayed(){
+        return leftMenu.isSidebarElementsDisplayed();
     }
 
-    public Boolean isHeaderDisplayed() {
-        return headerItems.isDisplayed();
+    public List<String> getSideBarMenuElementsText(){ return leftMenu.getSideBarMenuElementsText(); }
+
+    public int getSidebarElementsCount(){
+        return leftMenu.getSidebarElementsCount();
     }
 
+    public void goToDifferentElementsPage(){ headerMenu.goToDifferentElementPage(); }
 }
+

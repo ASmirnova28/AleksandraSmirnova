@@ -1,22 +1,26 @@
 package hw3.pageobject_model.tests;
 
-import hw3.pageobject_model.pages.HomePage;
 import hw3.utils.DriverManager;
+import hw3.utils.PropertiesReader;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 public abstract class AbstractTest {
 
     protected WebDriver webDriver;
-    protected HomePage homePage;
+    protected WebDriverWait wait;
+    protected static final String URL = PropertiesReader.get("Url");
+    protected static final String USERNAME = PropertiesReader.get("name");
+    protected static final String PASSWORD = PropertiesReader.get("password");
 
     @BeforeClass
     public void setUp() {
         webDriver = DriverManager.setupChrome();
-        homePage = new HomePage(webDriver);
+        wait = new WebDriverWait(webDriver, 1000);
         // 1. Open test site by URL
-        homePage.openHomePage();
+        webDriver.navigate().to(URL);
     }
 
     @AfterClass
@@ -24,4 +28,5 @@ public abstract class AbstractTest {
         // 10./12. Close Browser
         webDriver.quit();
     }
+
 }

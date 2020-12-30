@@ -16,10 +16,10 @@ public abstract class AbstractComponent {
     public AbstractComponent(WebDriver webDriver) {
         this.webDriver = webDriver;
         this.wait = new WebDriverWait(webDriver, 5);
-        PageFactory.initElements(webDriver,this);
+        PageFactory.initElements(webDriver, this);
     }
 
-    protected boolean isElementsDisplayed(List<WebElement> webElements){
+    protected boolean isElementsDisplayed(List<WebElement> webElements) {
         wait.until(ExpectedConditions.visibilityOfAllElements(webElements));
         boolean isDisplayed = false;
         for (WebElement element : webElements) {

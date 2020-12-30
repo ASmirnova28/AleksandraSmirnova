@@ -20,33 +20,3 @@ public class PropertiesReader {
         return null;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- /*    public void login() throws IOException {
-        InputStream input = new FileInputStream("src/test/resources/hw3/prop.properties");
-        Properties prop = new Properties();
-        prop.load(input);
-        dropDownMenu.click();
-        loginField.sendKeys(prop.getProperty("name"));
-        passwordField.sendKeys(prop.getProperty("password"));
-        enterButton.click();
-    }*/

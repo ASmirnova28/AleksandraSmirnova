@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class DiffElemPage extends AbstractPage{
+public class DiffElemPage extends AbstractPage {
 
     private LogRows logRows;
 
@@ -29,8 +29,8 @@ public class DiffElemPage extends AbstractPage{
         PageFactory.initElements(webDriver, this);
     }
 
-    public boolean isCheckboxLogDisplayed(String checkboxName, String status){
-        return logRows.isCheckboxLogDisplayed(checkboxName,  status);
+    public boolean isCheckboxLogDisplayed(String checkboxName, String status) {
+        return logRows.isCheckboxLogDisplayed(checkboxName, status);
     }
 
     public boolean isRadioLogDisplayed(String radioName) {
@@ -54,6 +54,5 @@ public class DiffElemPage extends AbstractPage{
     public void setRadio(String radioName) {
         putElementsInAList(radioName, radioElements);
     }
-
 }
 

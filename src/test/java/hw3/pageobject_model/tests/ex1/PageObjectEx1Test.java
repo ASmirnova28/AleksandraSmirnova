@@ -5,7 +5,6 @@ import hw3.pageobject_model.tests.AbstractTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,7 +13,7 @@ public class PageObjectEx1Test extends AbstractTest {
 
 
     @Test
-    public void ex1PageObjectTest()  {
+    public void ex1PageObjectTest() {
 
         HomePage homePage = new HomePage(webDriver);
 

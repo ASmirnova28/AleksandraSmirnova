@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class ButtonFrame extends AbstractComponent{
+public class ButtonFrame extends AbstractComponent {
     @FindBy(id = "frame")
     private WebElement frame;
 
@@ -16,20 +16,20 @@ public class ButtonFrame extends AbstractComponent{
         super(webDriver);
     }
 
-    public void switchToFrame(){
+    public void switchToFrame() {
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frame));
     }
 
-    public void switchToDefaultWindow(){
+    public void switchToDefaultWindow() {
         webDriver.switchTo().defaultContent();
     }
 
-    public boolean isButtonDisplayed(){
+    public boolean isButtonDisplayed() {
         wait.until(ExpectedConditions.visibilityOf(button));
         return button.isDisplayed();
     }
 
-    public boolean isFrameDisplayed(){
+    public boolean isFrameDisplayed() {
         wait.until(ExpectedConditions.visibilityOf(frame));
         return frame.isDisplayed();
     }

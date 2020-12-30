@@ -32,11 +32,11 @@ public class HeaderMenu extends AbstractComponent {
     @FindBy(css = ".m-l8 .dropdown")
     private WebElement serviceMenu;
 
-   public HeaderMenu(WebDriver webDriver) {
+    public HeaderMenu(WebDriver webDriver) {
         super(webDriver);
     }
 
-    public void login(String user, String pass){
+    public void login(String user, String pass) {
         wait.until(ExpectedConditions.elementToBeClickable(userIcon)).click();
         wait.until(ExpectedConditions.attributeToBe(By.className("uui-profile-menu"), "class",
                 "dropdown uui-profile-menu open"));
@@ -45,30 +45,30 @@ public class HeaderMenu extends AbstractComponent {
         wait.until(ExpectedConditions.elementToBeClickable(submitLoginButton)).click();
     }
 
-    public boolean isUserNameDisplayed(){
+    public boolean isUserNameDisplayed() {
         return wait.until(ExpectedConditions.visibilityOf(userName)).isDisplayed();
     }
 
-    public String getUserName(){
+    public String getUserName() {
         return wait.until(ExpectedConditions.visibilityOf(userName)).getText();
     }
 
-    public List<String> getHeaderMenuElementsText(){
+    public List<String> getHeaderMenuElementsText() {
         waitForHeaderMenuElementsToBeVisible();
         return headerMenuElements.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
-    public boolean isHeaderMenuItemsDisplayed(){
+    public boolean isHeaderMenuItemsDisplayed() {
         return isElementsDisplayed(headerMenuElements);
     }
 
-    public void goToDifferentElementPage(){
+    public void goToDifferentElementPage() {
         wait.until(ExpectedConditions.visibilityOf(serviceMenu)).click();
-        wait.until(ExpectedConditions.attributeToBe(serviceMenu,"class","dropdown open"));
+        wait.until(ExpectedConditions.attributeToBe(serviceMenu, "class", "dropdown open"));
         wait.until(ExpectedConditions.elementToBeClickable(By.linkText("DIFFERENT ELEMENTS"))).click();
     }
 
-    private void waitForHeaderMenuElementsToBeVisible(){
+    private void waitForHeaderMenuElementsToBeVisible() {
         wait.until(ExpectedConditions.visibilityOfAllElements(headerMenuElements));
     }
 }

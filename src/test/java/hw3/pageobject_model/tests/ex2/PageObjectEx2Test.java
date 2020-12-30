@@ -12,10 +12,9 @@ import static org.testng.Assert.assertTrue;
 
 public class PageObjectEx2Test extends AbstractTest {
 
-    protected DiffElemPage diffElemPage;
-
     @Test
     public void ex2PageObjectTest() {
+
         HomePage homePage = new HomePage(webDriver);
 
         // 2 Assert Browser title

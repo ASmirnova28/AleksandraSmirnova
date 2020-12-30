@@ -28,5 +28,4 @@ public abstract class AbstractTest {
         // 10./12. Close Browser
         webDriver.quit();
     }
-
 }

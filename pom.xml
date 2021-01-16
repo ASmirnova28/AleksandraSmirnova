@@ -20,30 +20,12 @@
 
     <profiles>
         <profile>
-            <id>Full</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <suite.file>${project.basedir}/src/test/resources/hw1/FullTestSuite.xml</suite.file>
-            </properties>
-        </profile>
-        <profile>
-            <id>AddAndSub</id>
+            <id>TestSuite</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.file>${project.basedir}/src/test/resources/hw1/AddAndSubTestSuite.xml</suite.file>
-            </properties>
-        </profile>
-        <profile>
-            <id>DivAndMult</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <suite.file>${project.basedir}/src/test/resources/hw1/DivAndMultTestSuite.xml</suite.file>
+                <suite.file>${project.basedir}/src/test/resources/hw2/TestSuite.xml</suite.file>
             </properties>
         </profile>
         <profile>
@@ -115,3 +97,5 @@
         </plugins>
     </build>
 </project>
+
+

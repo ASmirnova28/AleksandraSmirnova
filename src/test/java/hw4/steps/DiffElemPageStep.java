@@ -31,17 +31,17 @@ public class DiffElemPageStep {
         diffElemPage.setColorDropDown(color);
     }
 
-    @Step("For checkbox '{0}' there is individual log row with status '{1}'")
+    @Step("Assert that there is an individual log row with status '{1}' for checkbox '{0}'")
     public void individualLogRowForCheckboxShouldBe(String checkBox, String status) {
         assertTrue(diffElemPage.isCheckboxLogDisplayed(checkBox, status));
     }
 
-    @Step("For radio '{0}' there is individual log")
+    @Step("Assert that there is an individual log for radio '{0}'")
     public void individualLogRowForRadioShouldBeDisplayed(String radio) {
         assertTrue(diffElemPage.isRadioLogDisplayed(radio));
     }
 
-    @Step("For dropdown value '{0}' there is individual log row")
+    @Step("Assert that there is an individual log row for dropdown value '{0}'")
     public void individualLogRowForDropdownShouldBeDisplayed(String dropdownValue) {
         assertTrue(diffElemPage.isDropdownLogDisplayed(dropdownValue));
     }

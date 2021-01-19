@@ -21,30 +21,30 @@ public class HomePageStep {
         homePage = new HomePage(webDriver);
     }
 
-    @Step("Opening Home page")
+    @Step("Open Home page")
     public void open() {
         webDriver.manage().window().maximize();
         webDriver.get(URL);
     }
 
-    @Step("Browser title should be '{0}'")
+    @Step("Assert that browser title is '{0}'")
     public void browserTitleShouldBe(String expectedValue) {
         String actualValue = webDriver.getTitle();
         assertEquals(actualValue, expectedValue);
     }
 
-    @Step("Logging in as username:'{0}' password:'{1}'")
+    @Step("Log in as username:'{0}' password:'{1}'")
     public void login(String username, String password) {
         homePage.login(username, password);
     }
 
-    @Step("User name should be '{0}' and displayed")
+    @Step("Assert that user name '{0}' is displayed")
     public void usernameShouldBeLoggedIn(String value) {
         assertTrue(homePage.isUserNameDisplayed());
         assertEquals(homePage.getUserName(), value);
     }
 
-    @Step("Header menu should be displayed, has '{0}' items, which have proper texts: '{1}'")
+    @Step("Assert that header menu is displayed, has '{0}' items, which have proper texts: '{1}'")
     public void headerMenuShouldHaveItems(int amountOfItems, List<String> expectedHeaderText) {
         assertTrue(homePage.isHeaderMenuItemsDisplayed());
         assertEquals(homePage.getHeaderMenuText().size(), amountOfItems);
@@ -53,25 +53,25 @@ public class HomePageStep {
         assertEquals(actualHeaderMenuItemsText, expectedHeaderText);
     }
 
-    @Step("Home page should have '{0}' images")
+    @Step("Assert that Home page has '{0}' images")
     public void amountOfImagesShouldBe(int amountOfItems) {
         assertTrue(homePage.isBenefitIconsDisplayed());
         assertEquals(homePage.getBenefitImagesCount(), amountOfItems);
     }
 
-    @Step("There should be '{0}' texts under images on Home page: '{1}'")
+    @Step("Assert that there are '{0}' texts under images on Home page: '{1}'")
     public void textsUnderImagesShouldBe(int amountOfTexts, List<String> expectedImageText) {
         assertEquals(homePage.getBenefitTextsCount(), amountOfTexts);
         List<String> actualBenefitTexts = homePage.getBenefitTexts();
         assertEquals(actualBenefitTexts, expectedImageText);
     }
 
-    @Step("Frame with the button should be displayed")
+    @Step("Assert that frame with the button is displayed")
     public void frameWithTheButtonShouldBeDisplayed() {
         assertTrue(homePage.isFrameDisplayed());
     }
 
-    @Step("Switch to the frame, button in the frame should be displayed")
+    @Step("Switch to the frame, assert that button in the frame is displayed")
     public void buttonInFrameShouldBeDisplayed() {
         homePage.switchToFrame();
         assertTrue(homePage.isFrameButtonDisplayed());
@@ -82,14 +82,14 @@ public class HomePageStep {
         homePage.switchToDefault();
     }
 
-    @Step("There should be '{0}' items in the Left Section and they should have proper text: '{1}'")
+    @Step("Assert that there are '{0}' items in the Left Section and they have proper text: '{1}'")
     public void itemsOnLeftSectionShouldBe(int value, List<String> expectedText) {
         assertEquals(homePage.getSidebarElementsCount(), value);
         assertTrue(homePage.isSidebarElementsDisplayed());
         assertEquals(homePage.getSideBarMenuElementsText(), expectedText);
     }
 
-    @Step("Open through the header menu Service -> Different Elements Page")
+    @Step("Open Different Elements Page through the header menu Service")
     public void goToDifferentElementsPage() {
         homePage.goToDifferentElementsPage();
     }

@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Steps Test suite">
+
+    <test name="Steps Ex1 Test">
+        <classes>
+            <class name="hw4.tests.ex1.StepsEx1Test"/>
+        </classes>
+    </test>
+    <test name="Steps Ex2 Test">
+        <classes>
+            <class name="hw4.tests.ex1.StepsEx2Test"/>
+        </classes>
+    </test>
+    <test name="Steps Ex1 Failing Test">
+        <classes>
+            <class name="hw4.tests.ex2.StepsEx1FailingTest"/>
+        </classes>
+    </test>
+</suite>

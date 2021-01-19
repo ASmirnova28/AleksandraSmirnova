@@ -12,10 +12,14 @@
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven.compiler.plugin.source>1.8</maven.compiler.plugin.source>
         <maven.compiler.plugin.target>1.8</maven.compiler.plugin.target>
+        <allure-maven.version>2.10.0</allure-maven.version>
         <testng.version>7.3.0</testng.version>
         <selenium.version>3.141.59</selenium.version>
         <bonigarcia.version>3.8.1</bonigarcia.version>
         <slf4j.version>1.7.13</slf4j.version>
+        <allure.version>2.13.7</allure.version>
+        <aspectj.version>1.8.10</aspectj.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <profiles>
@@ -35,6 +39,15 @@
             </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw3/PageObjectTestSuite.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>StepsTestSuite</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>${project.basedir}/src/test/resources/hw4/StepsTestSuite.xml</suite.file>
             </properties>
         </profile>
     </profiles>
@@ -62,6 +75,12 @@
             <artifactId>slf4j-nop</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -83,7 +102,22 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
             </plugin>
         </plugins>
     </build>

@@ -14,6 +14,8 @@
         <maven.compiler.plugin.target>1.8</maven.compiler.plugin.target>
         <allure-maven.version>2.10.0</allure-maven.version>
         <testng.version>7.3.0</testng.version>
+        <checkstyle.version>8.41.1</checkstyle.version>
+        <jdi-light-html.version>1.3.2</jdi-light-html.version>
         <selenium.version>3.141.59</selenium.version>
         <bonigarcia.version>3.8.1</bonigarcia.version>
         <slf4j.version>1.7.13</slf4j.version>
@@ -26,7 +28,7 @@
         <profile>
             <id>TestSuite</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw2/TestSuite.xml</suite.file>
@@ -35,7 +37,7 @@
         <profile>
             <id>PageObjectTestSuite</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw3/PageObjectTestSuite.xml</suite.file>
@@ -44,10 +46,19 @@
         <profile>
             <id>StepsTestSuite</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw4/StepsTestSuite.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>JdiTestSuite</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>${project.basedir}/src/test/resources/hw6/JdiTestSuite.xml</suite.file>
             </properties>
         </profile>
     </profiles>
@@ -58,6 +69,11 @@
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-light-html</artifactId>
+            <version>${jdi-light-html.version}</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -113,6 +129,35 @@
                         <version>${aspectj.version}</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.1.2</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>${checkstyle.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <configLocation>
+                        https://raw.githubusercontent.com/DmitryKhodakovsky/epam-test-auto-spring-2021/master/codestyle_checks.xml
+                    </configLocation>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                    <violationSeverity>warning</violationSeverity>
+                    <consoleOutput>true</consoleOutput>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>io.qameta.allure</groupId>

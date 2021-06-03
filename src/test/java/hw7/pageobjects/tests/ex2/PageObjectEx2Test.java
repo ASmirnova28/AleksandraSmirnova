@@ -1,11 +1,10 @@
-package hw3.pageobject_model.tests.ex2;
+package hw7.pageobjects.tests.ex2;
 
-import hw3.pageobject_model.pages.DiffElemPage;
-import hw3.pageobject_model.pages.HomePage;
-import hw3.pageobject_model.tests.AbstractTest;
+import hw7.pageobjects.pages.DiffElemPage;
+import hw7.pageobjects.pages.HomePage;
+import hw7.pageobjects.tests.AbstractTest;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -47,8 +46,8 @@ public class PageObjectEx2Test extends AbstractTest {
         diffElemPage.setColorDropDown(color);
 
         // 9 Assert that
-        //   for each checkbox there is an individual log row and
-        //   value is corresponded to the status of checkbox
+        //   for each checkbox there is an individual log row and value is corresponded to
+        //   the status of checkbox
         assertTrue(diffElemPage.isCheckboxLogDisplayed(checkBoxOne, "true"));
         assertTrue(diffElemPage.isCheckboxLogDisplayed(checkBoxTwo, "true"));
 
@@ -56,8 +55,7 @@ public class PageObjectEx2Test extends AbstractTest {
         //   the status of radio button
         assertTrue(diffElemPage.isRadioLogDisplayed(radio));
 
-        //   for dropdown there is a log row and value is corresponded to
-        //   the selected value
+        //   for dropdown there is a log row and value is corresponded to the selected value
         assertTrue(diffElemPage.isDropdownLogDisplayed(color));
     }
 }

@@ -1,16 +1,14 @@
-package hw3.pageobject_model.tests.ex1;
+package hw7.pageobjects.tests.ex1;
 
-import hw3.pageobject_model.pages.HomePage;
-import hw3.pageobject_model.tests.AbstractTest;
+import hw7.pageobjects.pages.HomePage;
+import hw7.pageobjects.tests.AbstractTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import java.util.Arrays;
 import java.util.List;
 
-
 public class PageObjectEx1Test extends AbstractTest {
-
 
     @Test
     public void ex1PageObjectTest() {
@@ -32,7 +30,8 @@ public class PageObjectEx1Test extends AbstractTest {
         // they have proper texts
         softAssert.assertTrue(homePage.isHeaderMenuItemsDisplayed());
         List<String> actualHeaderMenuItemsText = homePage.getHeaderMenuText();
-        List<String> expectedHeaderMenuItemsText = Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
+        List<String> expectedHeaderMenuItemsText = Arrays.asList("HOME", "CONTACT FORM",
+                "SERVICE", "METALS & COLORS");
         softAssert.assertEquals(actualHeaderMenuItemsText.size(), 4);
         softAssert.assertEquals(actualHeaderMenuItemsText, expectedHeaderMenuItemsText);
 
@@ -43,15 +42,17 @@ public class PageObjectEx1Test extends AbstractTest {
         // 7 Assert that there are 4 texts on the Index Page under icons and
         // they have proper text
         List<String> actualBenefitTexts = homePage.getBenefitTexts();
-        List<String> expectedBenefitTexts = Arrays.asList("To include good practices\n" +
-                        "and ideas from successful\n" +
-                        "EPAM project",
-                "To be flexible and\n" +
-                        "customizable", "To be multiplatform",
+        List<String> expectedBenefitTexts = Arrays.asList("To include good practices\n"
+                        + "and ideas from successful\n"
+                        + "EPAM project",
+                "To be flexible and\n"
+                        + "customizable",
+                "To be multiplatform",
                 "Already have good base\n" +
                         "(about 20 internal and\n" +
                         "some external projects),\n" +
                         "wish to get more…");
+
         softAssert.assertEquals(actualBenefitTexts, expectedBenefitTexts);
         softAssert.assertEquals(homePage.getBenefitTextsCount(), 4);
 

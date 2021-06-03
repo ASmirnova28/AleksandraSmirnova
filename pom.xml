@@ -12,17 +12,19 @@
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven.compiler.plugin.source>1.8</maven.compiler.plugin.source>
         <maven.compiler.plugin.target>1.8</maven.compiler.plugin.target>
+       <!-- <checkstyle.version>8.41.1</checkstyle.version> -->
         <testng.version>7.3.0</testng.version>
         <selenium.version>3.141.59</selenium.version>
         <bonigarcia.version>3.8.1</bonigarcia.version>
         <slf4j.version>1.7.13</slf4j.version>
+        <lombok.version>1.18.10</lombok.version>
     </properties>
 
     <profiles>
         <profile>
             <id>TestSuite</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw2/TestSuite.xml</suite.file>
@@ -31,10 +33,19 @@
         <profile>
             <id>PageObjectTestSuite</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw3/PageObjectTestSuite.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>GridTestSuite</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>${project.basedir}/src/test/resources/hw7/GridTestSuite.xml</suite.file>
             </properties>
         </profile>
     </profiles>
@@ -62,6 +73,11 @@
             <artifactId>slf4j-nop</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -85,6 +101,35 @@
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.1.2</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>${checkstyle.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <configLocation>
+                        https://raw.githubusercontent.com/DmitryKhodakovsky/epam-test-auto-spring-2021/master/codestyle_checks.xml
+                    </configLocation>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                    <violationSeverity>warning</violationSeverity>
+                    <consoleOutput>true</consoleOutput>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin> -->
         </plugins>
     </build>
 </project>

@@ -48,11 +48,10 @@ public class PageObjectEx1Test extends AbstractTest {
                 "To be flexible and\n"
                         + "customizable",
                 "To be multiplatform",
-                "Already have good base\n" +
-                        "(about 20 internal and\n" +
-                        "some external projects),\n" +
-                        "wish to get more…");
-
+                "Already have good base\n"
+                        + "(about 20 internal and\n"
+                        + "some external projects),\n"
+                        + "wish to get more…");
         softAssert.assertEquals(actualBenefitTexts, expectedBenefitTexts);
         softAssert.assertEquals(homePage.getBenefitTextsCount(), 4);
 

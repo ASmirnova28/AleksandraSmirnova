@@ -27,7 +27,6 @@ public final class WebDriverFactory {
             throw new IllegalArgumentException(String.format("Unsupported browser %s",
                     browserName));
         }
-
         return webDriver;
     }
 

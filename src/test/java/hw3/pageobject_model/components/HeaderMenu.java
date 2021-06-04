@@ -65,7 +65,8 @@ public class HeaderMenu extends AbstractComponent {
     public void goToDifferentElementPage() {
         wait.until(ExpectedConditions.visibilityOf(serviceMenu)).click();
         wait.until(ExpectedConditions.attributeToBe(serviceMenu, "class", "dropdown open"));
-        wait.until(ExpectedConditions.elementToBeClickable(By.linkText("DIFFERENT ELEMENTS"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.linkText("DIFFERENT ELEMENTS")))
+                .click();
     }
 
     private void waitForHeaderMenuElementsToBeVisible() {

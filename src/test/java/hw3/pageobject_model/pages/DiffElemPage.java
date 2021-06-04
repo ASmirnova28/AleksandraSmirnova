@@ -48,11 +48,11 @@ public class DiffElemPage extends AbstractPage {
     }
 
     public void setCheckBox(String checkboxName) {
-        putElementsInAList(checkboxName, checkBoxElements);
+        putElementsInaList(checkboxName, checkBoxElements);
     }
 
     public void setRadio(String radioName) {
-        putElementsInAList(radioName, radioElements);
+        putElementsInaList(radioName, radioElements);
     }
 }
 

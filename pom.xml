@@ -12,7 +12,8 @@
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven.compiler.plugin.source>1.8</maven.compiler.plugin.source>
         <maven.compiler.plugin.target>1.8</maven.compiler.plugin.target>
-       <!-- <checkstyle.version>8.41.1</checkstyle.version> -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <checkstyle.version>8.41.1</checkstyle.version>
         <testng.version>7.3.0</testng.version>
         <selenium.version>3.141.59</selenium.version>
         <bonigarcia.version>3.8.1</bonigarcia.version>
@@ -101,7 +102,7 @@
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
-            <!--<plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.1.2</version>
@@ -129,7 +130,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin> -->
+            </plugin>
         </plugins>
     </build>
 </project>

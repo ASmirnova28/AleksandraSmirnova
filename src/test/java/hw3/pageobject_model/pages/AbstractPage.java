@@ -22,10 +22,11 @@ public abstract class AbstractPage {
         this.wait = new WebDriverWait(webDriver, 2);
     }
 
-    protected void putElementsInAList(String elementName, List<WebElement> webElementsList) {
+    protected void putElementsInaList(String elementName, List<WebElement> webElementsList) {
         for (WebElement element : webElementsList) {
-            if (!element.isSelected() & element.getText().equals(elementName))
+            if (!element.isSelected() & element.getText().equals(elementName)) {
                 element.click();
+            }
         }
     }
 }
